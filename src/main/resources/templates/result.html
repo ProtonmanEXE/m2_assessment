@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmins:th="https://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url('/Background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <title>Result</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row mt-5">
+            <div class="col d-flex justify-content-center">
+                <h1 style="font-size: 2.5em"><b>Search result for
+                    '<span th:text="*{requestedTitle}"></span>'</b></h1>
+            </div>
+        </div>
+
+        <div class="row mt-5 mb-3">
+            <div class="col d-flex justify-content-center">
+                <h2 data-th-if="${existingTitle == null or existingTitle.empty}"> 
+                    There are no titles that was found</h2>         
+
+                <div data-th-if="${!existingTitle.empty}">
+                    <div style="display: table-row">
+                        <div style="width: 520px; display: table-cell;">
+                            <table style="background-color:whitesmoke; width:500px">
+                                <tr>
+                                    <td>
+                                        <ol>
+                                            <span th:each="t : ${existingTitle}">
+                                                <a href="url"><li th:text="${t}"></li></a>
+                                            </span>
+                                        </ol>
+                                    </td>
+                                </tr>
+                            </table>    
+                        </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+</body>
+</html>
