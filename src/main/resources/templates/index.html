@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmins:th="https://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url('/Background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <title>Open Library</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row mt-5">
+            <div class="col d-flex justify-content-center">
+                <h1 style="font-size: 2.5em"><b>Welcome to Ian's Open Library</b></h1>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col d-flex justify-content-center">
+                <form method="GET" action="/weather">
+
+                    <label class="form-label"><b>Please enter the title:</b></label>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="title" id="title"  
+                            required placeholder="Enter the title" size="80">
+                        <button type="submit" class="btn btn-primary" 
+                            style="background-color:black"
+                            ><b>Go!</b></button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
