@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import protonmanexe.t.service.BookService;
 
 @Controller
-@RequestMapping(path="/result", produces=MediaType.TEXT_HTML_VALUE)
+@RequestMapping(produces=MediaType.TEXT_HTML_VALUE)
 public class SearchController {
 
     @Autowired
     BookService bookSvc;
     
     // start of Task 4
-    @GetMapping
+    @GetMapping(path="/result")
     public String getTitle (@RequestParam (required=true) String title, Model model) {
 
         List<List<String>> mapTitleKey = bookSvc.search(title);
@@ -30,5 +30,11 @@ public class SearchController {
         return "result";
     }
     // end of Task 4
+
+    @GetMapping()
+    public String getIndex () {
+        
+        return "index";
+    }
 
 }
