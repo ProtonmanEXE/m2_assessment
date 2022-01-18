@@ -1,6 +1,6 @@
 package protonmanexe.t.controller;
 
-import java.util.Map;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,14 +27,13 @@ public class SearchController {
     @GetMapping
     public String getTitle (@RequestParam (required=true) String title, Model model) {
 
-        Map<String, String> mapTitleKey = bookSvc.search(title);
+        List<List<String>> mapTitleKey = bookSvc.search(title);
         model.addAttribute("requestedTitle", title);
-        logging.info("map all keys > " +mapTitleKey.keySet());
-        model.addAttribute("existingTitle", mapTitleKey.keySet());
+        logging.info("first element > " +mapTitleKey.get(0));
+        model.addAttribute("existingTitle", mapTitleKey);
         
         return "result";
     }
     // end of Task 4
-
 
 }

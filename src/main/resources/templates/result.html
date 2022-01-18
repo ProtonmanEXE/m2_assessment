@@ -28,35 +28,52 @@
             </div>
         </div>
 
-        <div class="row mt-5 mb-3">
+        <div class="row mt-5 mb-5">
             <div class="col d-flex justify-content-center">
                 <h2 data-th-if="${existingTitle == null or existingTitle.empty}"> 
-                    There are no titles that was found</h2>         
+                    There are no titles that was found</h2>
+                <!-- Task 4 - Display an appropriate message to show no result -->
 
                 <div data-th-if="${!existingTitle.empty}">
                     <div style="display: table-row">
                         <div style="width: 520px; display: table-cell;">
-                            <table style="background-color:whitesmoke; width:500px">
+                            <table style="background-color:whitesmoke; width:500px;
+                                border-radius: 15px">
                                 <tr>
                                     <td>
                                         <ol>
+                <!-- Task 4 - Each result displayed as clickable link -->
                                             <span th:each="t : ${existingTitle}">
-                                                <a href="url"><li th:text="${t}"></li></a>
+                                                <a th:href="@{/book(${t[0]})}">
+                                                    <li th:text="${t[1]}"></li></a>
                                             </span>
                                         </ol>
                                     </td>
                                 </tr>
                             </table>    
                         </div>
-
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Task 4 - Back button -->
+        <form method="GET" action="/">
+            <div style="margin-right: 24.5%">
+                <div class="col d-flex flex-row-reverse">
+                    <button type="submit" class="btn btn-primary" style="background-color: 
+                        black">
+                        <span style="color:white"><b>Search for more books!</b></span>      
+                </div>
+            </div>
+        </form>
 
-
-
-
+        <div style="margin-left: -5%; position: relative; bottom: 7%;">
+            <div class="col d-flex flex-row">
+                Current book details is powered by&nbsp
+                <a href="https://openlibrary.org/developers/api">Book API from Open Library</a>
+            </div>
+        </div>
 
     </div>
 
