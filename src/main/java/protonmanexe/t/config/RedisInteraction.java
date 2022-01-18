@@ -28,11 +28,15 @@ public class RedisInteraction {
     public class RedisConfig {
         private static final Logger logger = LoggerFactory.getLogger(RedisConfig.class);
     
+        // call host, port and daatbase from file
         @Value("${spring.redis.host}") 
         private String redisHost;
 
         @Value("${spring.redis.port}") 
         private Optional<Integer> redisPort;
+
+        @Value("${spring.redis.database}")
+        private Integer redisDatabase;
         
         @Bean("MyRedis")
         public RedisTemplate<String, Object> redisTemplate() {
@@ -43,6 +47,7 @@ public class RedisInteraction {
             // set redis properties
             config.setHostName(redisHost);
             config.setPort(redisPort.get());
+            config.setDatabase(redisDatabase);
         
             // check environment variable for password
             String redisPassword = System.getenv(ENV_REDIS_PASSWORD);

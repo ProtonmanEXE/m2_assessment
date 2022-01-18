@@ -36,7 +36,7 @@ public class BookService {
                 .fromUriString(URL_TITLE)  
                 .queryParam("q", searchTerm.trim().replace(" ", "+")) 
                 // trim whitespaces and replace spaces with +
-                .queryParam("limit", 2) // return a max. of 20 books
+                .queryParam("limit", 20) // return a max. of 20 books
                 .toUriString();
         logging.info("url > " +url);
 
