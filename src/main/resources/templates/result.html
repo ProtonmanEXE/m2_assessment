@@ -21,31 +21,38 @@
 
     <div class="container">
 
-        <div class="row mt-5">
-            <div class="col d-flex justify-content-center">
-                <h1 style="font-size: 2.5em"><b>Search result for
-                    '<span th:text="*{requestedTitle}"></span>'</b></h1>
+        <div style="min-height: calc(100vh - 100px)">
+        <!-- this is important as by fixing the height of the content, it will 
+        allow my footer to always stay at the bottom of page -->
+
+            <div class="row mt-5">
+                <div class="col d-flex justify-content-center">
+                    <h1 style="font-size: 2.5em"><b>Search result for
+                        '<span th:text="*{requestedTitle}"></span>'</b></h1>
+                </div>
             </div>
-        </div>
 
-        <div class="row mt-5 mb-5">
-            <div class="col d-flex justify-content-center">
-                <h2 data-th-if="${existingTitle == null or existingTitle.empty}"> 
-                    There are no titles that was found</h2>
-                <!-- Task 4 - Display an appropriate message to show no result -->
+            <div class="row mt-5 mb-5">
+                <div class="col d-flex justify-content-center">
+                    <h2 data-th-if="${existingTitle == null or existingTitle.empty}"> 
+                        There are no titles that was found</h2>
+                    <!-- Task 4 - Display an appropriate message to show no result -->
 
-                <div data-th-if="${!existingTitle.empty}">
-                    <div style="display: table-row">
+                    <div data-th-if="${!existingTitle.empty}">
                         <div style="width: 520px; display: table-cell;">
-                            <table style="background-color:whitesmoke; width:500px;
+                            <table style="background-color:whitesmoke; width:700px;
                                 border-radius: 15px">
                                 <tr>
                                     <td>
-                                        <ol>
-                <!-- Task 4 - Each result displayed as clickable link -->
+                                        <ol style="padding-top:1em">
+                    <!-- Task 4 - Each result displayed as clickable link -->
                                             <span th:each="t : ${existingTitle}">
-                                                <a th:href="@{/book(${t[0]})}">
-                                                    <li th:text="${t[1]}"></li></a>
+                                                <!-- Other people's method -->
+                                                <!-- <a th:href="'/book/'+${t[0]}"></a> -->
+                                                <!-- <a th:href="@{book/(${t[0]})}"> -->
+                                                <a th:href="@{book/{id}(id=${t[0]})}">
+                                                    <li th:text="${t[1]}" 
+                                                        style="padding-top:0.5em"></li></a>
                                             </span>
                                         </ol>
                                     </td>
@@ -55,25 +62,26 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Task 4 - Back button -->
-        <form method="GET" action="/">
-            <div style="margin-right: 24.5%">
-                <div class="col d-flex flex-row-reverse">
-                    <button type="submit" class="btn btn-primary" style="background-color: 
-                        black">
-                        <span style="color:white"><b>Search for more books!</b></span>      
+            <!-- Task 4 - Back button -->
+            <form method="POST" action="/">
+                <div style="margin-right: 18.5%">
+                    <div class="col d-flex flex-row-reverse">
+                        <button type="submit" class="btn btn-primary" 
+                        style="background-color:  black">
+                            <span style="color:white">
+                                <b>Search for more books!</b></span>      
+                    </div>
                 </div>
-            </div>
-        </form>
-
-        <div style="margin-left: -5%; position: relative; bottom: 7%;">
-            <div class="col d-flex flex-row">
-                Current book details is powered by&nbsp
-                <a href="https://openlibrary.org/developers/api">Book API from Open Library</a>
-            </div>
+            </form>
+        
         </div>
+
+        <p style="position:relative">
+                Current book details is powered by
+                <a href="https://openlibrary.org/developers/api">
+                    Book API from Open Library</a>
+        </p>
 
     </div>
 

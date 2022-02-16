@@ -21,60 +21,65 @@
 <body th:object="${BookDetails}">
 
     <div class="container">
+
+        <div style="min-height: calc(100vh - 100px)">
+            <!-- this is important as by fixing the height of the content, it will 
+            allow my footer to always stay at the bottom of page -->
         
-        <p class="row mt-4">
-            <div class="col d-flex align-items-center justify-content-center">
-                <h1><b>Book Detail</b></h1>
-            </div>
-        </p>        
-               
-        <p class="row mt-3">
-            <div class="d-flex align-items-center justify-content-center">
-                <table style="background-color:whitesmoke; width:700px; 
-                    font-size: 125%; border-radius: 15px">
-                    <tr>
-                        <td>
-                            <ul>
-        <!-- Task 6 - Display title, description, excerpts -->
-                                <li><b>Title: 
-                                    <span th:text="${BookDetails.title}"></b></span>
-                                </li>
-                                <li><b>Description:</b> 
-                                    <span th:text="${BookDetails.description}"></span>
-                                </li>
-                                <li><b>Excerpt:</b>
-                                    <span th:text="${BookDetails.excerpt}"></span>
-                                </li>
-                                <li><b>Cached:</b>
-                                    <span th:text="${status}"></span></li>
-                            </ul> 
-                        </td>
-                    </tr>
-                </table>              
-            </div>
-        </p>
-
-        <div class="d-flex align-items-center justify-content-center">
-            <i><span th:text="${msg}"></span></i>
-        </div>
-
-        <!-- Task 6 - Button to allow users to return to view 1 -->
-        <form method="GET" action="/">
+            <p class="row mt-4">
+                <div class="col d-flex align-items-center justify-content-center">
+                    <h1><b>Book Detail</b></h1>
+                </div>
+            </p>        
+                
             <p class="row mt-3">
                 <div class="d-flex align-items-center justify-content-center">
-                    <button type="submit" class="btn btn-primary" style="background-color: 
-                        black">
-                        <span style="color:white"><b>Search for more books!</b></span>      
+                    <table style="background-color:whitesmoke; width:700px; 
+                        font-size: 125%; border-radius: 15px">
+                        <tr>
+                            <td>
+                                <ul style="padding-top:1em">
+            <!-- Task 6 - Display title, description, excerpts -->
+                                    <li><b>Title: 
+                                        <span th:text="${BookDetails.title}"></b></span>
+                                    </li>
+                                    <li><b>Description:</b> 
+                                        <span th:text="${BookDetails.description}"></span>
+                                    </li>
+                                    <li><b>Excerpt:</b>
+                                        <span th:text="${BookDetails.excerpt}"></span>
+                                    </li>
+                                    <li><b>Cached:</b>
+                                        <span th:text="${status}"></span></li>
+                                </ul> 
+                            </td>
+                        </tr>
+                    </table>              
                 </div>
             </p>
-        </form>
 
-        <div style="margin-left: -5%; position: relative; bottom: 7%;">
-            <div class="col d-flex flex-row">
-                Current book details is powered by&nbsp
-                <a href="https://openlibrary.org/developers/api">Book API from Open Library</a>
+            <div class="d-flex align-items-center justify-content-center">
+                <i><span th:text="${msg}"></span></i>
             </div>
+
+            <!-- Task 6 - Button to allow users to return to view 1 -->
+            <form method="POST" action="/">
+                <p class="row mt-3">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button type="submit" class="btn btn-primary" style="background-color: 
+                            black">
+                            <span style="color:white"><b>Search for more books!</b></span>      
+                    </div>
+                </p>
+            </form>
+
         </div>
+
+        <p style="position:relative">
+            Current book details is powered by
+            <a href="https://openlibrary.org/developers/api">
+                Book API from Open Library</a>
+        </p>
         
     </div>
     
